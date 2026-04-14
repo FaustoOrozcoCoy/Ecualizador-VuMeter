@@ -1,0 +1,232 @@
+:root {
+  --bg: #0f172a;
+  --panel: rgba(15, 23, 42, 0.86);
+  --panel-border: rgba(148, 163, 184, 0.2);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --accent-2: #38bdf8;
+  --danger: #f97316;
+  --shadow: 0 18px 50px rgba(15, 23, 42, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.2), transparent 34%),
+    radial-gradient(circle at top right, rgba(34, 197, 94, 0.16), transparent 28%),
+    linear-gradient(145deg, #020617 0%, #0f172a 45%, #111827 100%);
+}
+
+.app-shell {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.panel-header,
+.section-title,
+.transport-buttons,
+.info-grid,
+.band-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.panel-header {
+  grid-template-columns: 1fr auto;
+  align-items: start;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.subtitle,
+.section-title p,
+.band-range,
+.status-text,
+.info-grid p {
+  color: var(--muted);
+}
+
+.file-button,
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  font: inherit;
+}
+
+.file-button {
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  color: #04111d;
+  padding: 14px 22px;
+  font-weight: 700;
+  align-self: center;
+}
+
+.file-button input {
+  display: none;
+}
+
+.playback-card {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+audio {
+  width: 100%;
+  filter: hue-rotate(8deg) saturate(1.2);
+}
+
+.transport-buttons {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+button {
+  padding: 12px 16px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #e2e8f0;
+  background: rgba(51, 65, 85, 0.9);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: rgba(71, 85, 105, 0.95);
+}
+
+button.secondary {
+  background: rgba(15, 118, 110, 0.92);
+}
+
+.band-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.band-card {
+  background: rgba(2, 6, 23, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 22px;
+  padding: 20px;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.meter-wrap {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 12px;
+  align-items: end;
+}
+
+.meter-scale {
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.meter-shell {
+  width: 82px;
+  height: 220px;
+  padding: 6px;
+  border-radius: 18px;
+  background:
+    linear-gradient(to top, rgba(248, 113, 113, 0.14), rgba(56, 189, 248, 0.08)),
+    rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  display: flex;
+  align-items: end;
+}
+
+.meter-fill {
+  width: 100%;
+  height: 0%;
+  border-radius: 12px;
+  background:
+    linear-gradient(to top, #22c55e 0%, #84cc16 45%, #facc15 72%, #f97316 88%, #ef4444 100%);
+  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.14);
+  transition: height 0.08s linear;
+}
+
+.slider-label,
+.gain-value {
+  font-weight: 700;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-2);
+}
+
+.gain-value {
+  font-size: 1.05rem;
+}
+
+.info-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 20px;
+}
+
+.info-grid article {
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(2, 6, 23, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+@media (max-width: 860px) {
+  .panel-header,
+  .band-grid,
+  .info-grid,
+  .transport-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .file-button {
+    justify-self: start;
+  }
+}

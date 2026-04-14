@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecualizador Didactico de 3 Bandas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="panel panel-main">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Simulacion educativa</p>
+          <h1>Ecualizador de Audio de 3 Bandas</h1>
+          <p class="subtitle">
+            Carga un archivo, reproduce el audio y ajusta graves, medios y agudos
+            mientras observas la energia de cada banda en tiempo real.
+          </p>
+        </div>
+        <label class="file-button">
+          <input id="audio-file-input" type="file" accept=".mp3,.wav,.ogg,.m4a,.aac,audio/*">
+          <span>Cargar audio</span>
+        </label>
+      </div>
+
+      <section class="playback-card">
+        <audio id="audio-element" controls crossorigin="anonymous"></audio>
+        <div class="transport-buttons">
+          <button id="play-button" type="button">Reproducir</button>
+          <button id="pause-button" type="button">Pausar</button>
+          <button id="restart-button" type="button">Reiniciar</button>
+          <button id="reset-gains-button" type="button" class="secondary">Reset 0 dB</button>
+        </div>
+        <p id="status-text" class="status-text">Selecciona un archivo de audio para comenzar.</p>
+      </section>
+    </section>
+
+    <section class="panel panel-eq">
+      <div class="section-title">
+        <h2>Control de ganancia y nivel por banda</h2>
+        <p>Rangos didacticos aproximados: graves 20-250 Hz, medios 250 Hz-4 kHz, agudos 4-20 kHz.</p>
+      </div>
+
+      <div class="band-grid">
+        <article class="band-card" data-band="bass">
+          <h3>Graves</h3>
+          <p class="band-range">20 Hz - 250 Hz</p>
+          <div class="meter-wrap">
+            <div class="meter-scale">
+              <span>0 dB</span>
+              <span>-12 dB</span>
+              <span>-24 dB</span>
+              <span>-36 dB</span>
+              <span>-48 dB</span>
+            </div>
+            <div class="meter-shell">
+              <div id="meter-bass" class="meter-fill"></div>
+            </div>
+          </div>
+          <label class="slider-label" for="gain-bass">Ganancia</label>
+          <input id="gain-bass" type="range" min="-18" max="18" value="0" step="0.5">
+          <output id="value-bass" class="gain-value">0.0 dB</output>
+        </article>
+
+        <article class="band-card" data-band="mid">
+          <h3>Medios</h3>
+          <p class="band-range">250 Hz - 4 kHz</p>
+          <div class="meter-wrap">
+            <div class="meter-scale">
+              <span>0 dB</span>
+              <span>-12 dB</span>
+              <span>-24 dB</span>
+              <span>-36 dB</span>
+              <span>-48 dB</span>
+            </div>
+            <div class="meter-shell">
+              <div id="meter-mid" class="meter-fill"></div>
+            </div>
+          </div>
+          <label class="slider-label" for="gain-mid">Ganancia</label>
+          <input id="gain-mid" type="range" min="-18" max="18" value="0" step="0.5">
+          <output id="value-mid" class="gain-value">0.0 dB</output>
+        </article>
+
+        <article class="band-card" data-band="treble">
+          <h3>Agudos</h3>
+          <p class="band-range">4 kHz - 20 kHz</p>
+          <div class="meter-wrap">
+            <div class="meter-scale">
+              <span>0 dB</span>
+              <span>-12 dB</span>
+              <span>-24 dB</span>
+              <span>-36 dB</span>
+              <span>-48 dB</span>
+            </div>
+            <div class="meter-shell">
+              <div id="meter-treble" class="meter-fill"></div>
+            </div>
+          </div>
+          <label class="slider-label" for="gain-treble">Ganancia</label>
+          <input id="gain-treble" type="range" min="-18" max="18" value="0" step="0.5">
+          <output id="value-treble" class="gain-value">0.0 dB</output>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel panel-info">
+      <div class="section-title">
+        <h2>Arquitectura didactica</h2>
+        <p>La interfaz esta pensada para mostrar con claridad el flujo de audio y medicion.</p>
+      </div>
+      <div class="info-grid">
+        <article>
+          <h3>Carga y reproduccion</h3>
+          <p>
+            El archivo se selecciona desde tu equipo y se reproduce con el elemento de audio del navegador.
+          </p>
+        </article>
+        <article>
+          <h3>Filtrado por bandas</h3>
+          <p>
+            Se usa una separacion simple mediante filtros pasa-bajos, pasa-banda y pasa-altos para representar las tres bandas.
+          </p>
+        </article>
+        <article>
+          <h3>Visualizacion</h3>
+          <p>
+            Cada banda se analiza en paralelo para estimar su energia RMS y mostrarla como un medidor vertical tipo VU.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
