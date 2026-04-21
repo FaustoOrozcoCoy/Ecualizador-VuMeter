@@ -61,6 +61,30 @@
           <label class="slider-label" for="gain-bass">Ganancia</label>
           <input id="gain-bass" type="range" min="-18" max="18" value="0" step="0.5">
           <output id="value-bass" class="gain-value">0.0 dB</output>
+          <label class="control-label" for="family-bass">Arquitectura</label>
+          <select id="family-bass" class="control-select">
+            <option value="simple">Cascada simple</option>
+            <option value="butterworth" selected>Butterworth</option>
+            <option value="chebyshev">Chebyshev</option>
+            <option value="elliptic">Eliptico</option>
+          </select>
+          <label class="control-label" for="order-bass">Orden</label>
+          <select id="order-bass" class="control-select">
+            <option value="2" selected>2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+          </select>
+          <label class="control-label" for="cutoff-bass">Frecuencia de corte (Hz)</label>
+          <input id="cutoff-bass" class="control-input" type="number" min="20" max="20000" step="1" value="250">
+          <div id="advanced-bass" class="advanced-controls">
+            <label class="control-label" for="ripple-bass">Ripple Rp (dB)</label>
+            <input id="ripple-bass" class="control-input" type="number" min="0.1" max="6" step="0.1" value="1">
+            <label class="control-label" for="stop-bass">Atenuacion Rs (dB)</label>
+            <input id="stop-bass" class="control-input" type="number" min="20" max="120" step="1" value="40">
+            <label class="control-label" for="transition-bass">Factor de transicion</label>
+            <input id="transition-bass" class="control-input" type="number" min="1.1" max="10" step="0.1" value="1.8">
+          </div>
         </article>
 
         <article class="band-card" data-band="mid">
@@ -81,6 +105,32 @@
           <label class="slider-label" for="gain-mid">Ganancia</label>
           <input id="gain-mid" type="range" min="-18" max="18" value="0" step="0.5">
           <output id="value-mid" class="gain-value">0.0 dB</output>
+          <label class="control-label" for="family-mid">Arquitectura</label>
+          <select id="family-mid" class="control-select">
+            <option value="simple">Cascada simple</option>
+            <option value="butterworth" selected>Butterworth</option>
+            <option value="chebyshev">Chebyshev</option>
+            <option value="elliptic">Eliptico</option>
+          </select>
+          <label class="control-label" for="order-mid">Orden</label>
+          <select id="order-mid" class="control-select">
+            <option value="2" selected>2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+          </select>
+          <label class="control-label" for="lowcut-mid">Frecuencia inferior (Hz)</label>
+          <input id="lowcut-mid" class="control-input" type="number" min="20" max="20000" step="1" value="250">
+          <label class="control-label" for="highcut-mid">Frecuencia superior (Hz)</label>
+          <input id="highcut-mid" class="control-input" type="number" min="20" max="20000" step="1" value="4000">
+          <div id="advanced-mid" class="advanced-controls">
+            <label class="control-label" for="ripple-mid">Ripple Rp (dB)</label>
+            <input id="ripple-mid" class="control-input" type="number" min="0.1" max="6" step="0.1" value="1">
+            <label class="control-label" for="stop-mid">Atenuacion Rs (dB)</label>
+            <input id="stop-mid" class="control-input" type="number" min="20" max="120" step="1" value="40">
+            <label class="control-label" for="transition-mid">Factor de transicion</label>
+            <input id="transition-mid" class="control-input" type="number" min="1.1" max="10" step="0.1" value="1.8">
+          </div>
         </article>
 
         <article class="band-card" data-band="treble">
@@ -101,7 +151,57 @@
           <label class="slider-label" for="gain-treble">Ganancia</label>
           <input id="gain-treble" type="range" min="-18" max="18" value="0" step="0.5">
           <output id="value-treble" class="gain-value">0.0 dB</output>
+          <label class="control-label" for="family-treble">Arquitectura</label>
+          <select id="family-treble" class="control-select">
+            <option value="simple">Cascada simple</option>
+            <option value="butterworth" selected>Butterworth</option>
+            <option value="chebyshev">Chebyshev</option>
+            <option value="elliptic">Eliptico</option>
+          </select>
+          <label class="control-label" for="order-treble">Orden</label>
+          <select id="order-treble" class="control-select">
+            <option value="2" selected>2</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+          </select>
+          <label class="control-label" for="cutoff-treble">Frecuencia de corte (Hz)</label>
+          <input id="cutoff-treble" class="control-input" type="number" min="20" max="20000" step="1" value="4000">
+          <div id="advanced-treble" class="advanced-controls">
+            <label class="control-label" for="ripple-treble">Ripple Rp (dB)</label>
+            <input id="ripple-treble" class="control-input" type="number" min="0.1" max="6" step="0.1" value="1">
+            <label class="control-label" for="stop-treble">Atenuacion Rs (dB)</label>
+            <input id="stop-treble" class="control-input" type="number" min="20" max="120" step="1" value="40">
+            <label class="control-label" for="transition-treble">Factor de transicion</label>
+            <input id="transition-treble" class="control-input" type="number" min="1.1" max="10" step="0.1" value="1.8">
+          </div>
         </article>
+      </div>
+    </section>
+
+    <section class="panel panel-spectrum">
+      <div class="section-title">
+        <h2>Espectro de salida y respuesta del ecualizador</h2>
+        <p>
+          La curva celeste muestra el espectro unilateral en tiempo real de la salida ya filtrada.
+          La curva naranja muestra la respuesta teorica total del ecualizador para la configuracion actual.
+        </p>
+      </div>
+      <div class="spectrum-legend">
+        <span class="legend-item legend-output">Salida filtrada</span>
+        <span class="legend-item legend-theory">Respuesta teorica</span>
+      </div>
+      <div class="spectrum-controls">
+        <label class="knob-label" for="theory-scale-knob">Escala de respuesta teorica</label>
+        <div class="knob-row">
+          <span>dB</span>
+          <input id="theory-scale-knob" type="range" min="0" max="1" step="1" value="0">
+          <span>Lineal</span>
+          <output id="theory-scale-label" class="knob-value">dB</output>
+        </div>
+      </div>
+      <div class="spectrum-shell">
+        <canvas id="spectrum-canvas" aria-label="Grafica del espectro de salida y respuesta teorica"></canvas>
       </div>
     </section>
 

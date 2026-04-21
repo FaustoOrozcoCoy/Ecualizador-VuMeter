@@ -1,38 +1,39 @@
 # Ecualizador didactico de 3 bandas
 
-Aplicacion web local pensada como simulacion educativa de un sistema con:
+Aplicacion web pensada para ilustrar el resultado esperado de un laboratorio de Circuitos 2, en el que los estudiantes desarrollan un ecualizador de audio por bandas y observan su efecto sobre una señal musical.
 
-- banco de filtros por bandas
-- control de ganancia por banda
-- indicador de energia por banda
+## Uso rapido
 
-## Archivos
+1. Abre `index.html` en un navegador moderno.
+2. Si existe `cancion.mp3` en la misma carpeta, la aplicacion intentara cargarla por defecto.
+3. Si quieres usar otra pista, pulsa **Cargar audio**.
+4. Reproduce el audio y ajusta graves, medios y agudos.
+5. Observa los medidores por banda y la grafica del espectro de salida.
 
-- `index.html`: estructura de la interfaz
-- `styles.css`: estilos visuales
-- `app.js`: carga del audio, filtrado, ganancia y medidores
-
-## Como ejecutar
-
-1. Abre `index.html` en un navegador moderno como Chrome, Edge o Firefox.
-2. Si en la misma carpeta existe el archivo `Half A Man.M4A`, la aplicacion intentara dejarlo cargado por defecto.
-3. Si quieres usar otro archivo, pulsa **Cargar audio** y selecciona un MP3, WAV u otro formato compatible.
-4. Usa **Reproducir** para iniciar el audio.
-5. Mueve los deslizadores de **Graves**, **Medios** y **Agudos** mientras escuchas.
-6. Observa los medidores verticales para ver el nivel de energia de cada banda.
-
-Si prefieres servirlo localmente en lugar de abrir el HTML directamente, puedes usar por ejemplo:
+Si prefieres ejecutarla con un servidor local:
 
 ```powershell
 python -m http.server 8000
 ```
 
-y luego abrir `http://localhost:8000`.
+Luego abre `http://localhost:8000`.
 
+## Publicarlo en GitHub Pages
 
-## Observaciones didacticas
+Coloca en la raiz del repositorio:
 
-- El canal de graves deja pasar con mayor fuerza el contenido por debajo de 250 Hz, por lo que refuerza bombo, bajo y componentes de baja frecuencia.
-- El canal de medios enfatiza la zona central alrededor de 1 kHz y cubre de forma aproximada la franja media, haciendo mas evidentes voces, guitarras y presencia general.
-- El canal de agudos resalta el contenido por encima de 4 kHz, haciendo mas notorios brillo, platillos y detalle.
-- La app  prioriza una respuesta inmediata al mover los controles.
+- `index.html`
+- `styles.css`
+- `app.js`
+- `cancion.mp3`
+
+Pasos:
+
+1. Crea un repositorio publico en GitHub.
+2. Sube esos archivos.
+3. En `Settings > Pages`, activa `Deploy from a branch`.
+4. Elige la rama `main` y la carpeta `/ (root)`.
+
+GitHub te dara un enlace similar a:
+
+`https://TU_USUARIO.github.io/ecualizador-3-bandas/`
